@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-const thisIsUnusedAndWillBreakLint = "test";
 export default function Home() {
   return (
     <div>

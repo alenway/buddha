@@ -7,7 +7,7 @@ export interface RotationState {
   y: number;
   z: number;
 }
-const thisIsUnusedAndWillBreakLint = "test";
+
 export function useRotation(initial: RotationState = { x: 0.4, y: 0.6, z: 0 }) {
   const [rotation, setRotation] = useState<RotationState>(initial);
   const dragging = useRef(false);

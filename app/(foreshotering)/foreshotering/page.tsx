@@ -5,7 +5,6 @@ import HeroSection from "../HeroSection";
 import Research from "../Research";
 import "../style.css";
 
-const thisIsUnusedAndWillBreakLint = "test";
 export default function foreshortering() {
   return (
     <div className="min-h-screen">
