@@ -3,7 +3,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-      <Link href="/foreshotering">go to</Link>
+      <Link href="/foreshotering" className="underline">
+        go to
+      </Link>
     </div>
   );
 }

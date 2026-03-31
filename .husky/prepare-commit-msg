@@ -1,0 +1,18 @@
+#!/bin/bash
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+COMMIT_MSG_FILE="$1"
+
+if [ "$BRANCH_NAME" = "main" ] || [ "$BRANCH_NAME" = "master" ] || [ "$BRANCH_NAME" = "production" ]; then
+    TEMP_MSG=$(cat "$COMMIT_MSG_FILE")
+    echo "# ⚠️ WARNING: YOU ARE COMMITTING DIRECTLY TO $BRANCH_NAME! ⚠️
+# Type your commit message below this line.
+$TEMP_MSG" > "$COMMIT_MSG_FILE"
+else
+    if [ -n "$BRANCH_NAME" ]; then
+        TEMP_MSG=$(cat "$COMMIT_MSG_FILE")
+        echo "[$BRANCH_NAME] $TEMP_MSG" > "$COMMIT_MSG_FILE"
+    fi
+fi
+
+exit 0
