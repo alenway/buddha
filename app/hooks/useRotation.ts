@@ -7,7 +7,7 @@ export interface RotationState {
   y: number;
   z: number;
 }
-
+const thisIsUnusedAndWillBreakLint = "test";
 export function useRotation(initial: RotationState = { x: 0.4, y: 0.6, z: 0 }) {
   const [rotation, setRotation] = useState<RotationState>(initial);
   const dragging = useRef(false);
@@ -23,7 +23,7 @@ export function useRotation(initial: RotationState = { x: 0.4, y: 0.6, z: 0 }) {
     const dx = e.clientX - lastPos.current.x;
     const dy = e.clientY - lastPos.current.y;
     lastPos.current = { x: e.clientX, y: e.clientY };
-    setRotation(r => ({
+    setRotation((r) => ({
       ...r,
       y: r.y + dx * 0.01,
       x: r.x + dy * 0.01,
@@ -47,7 +47,7 @@ export function useRotation(initial: RotationState = { x: 0.4, y: 0.6, z: 0 }) {
     const dx = t.clientX - lastPos.current.x;
     const dy = t.clientY - lastPos.current.y;
     lastPos.current = { x: t.clientX, y: t.clientY };
-    setRotation(r => ({
+    setRotation((r) => ({
       ...r,
       y: r.y + dx * 0.01,
       x: r.x + dy * 0.01,
@@ -60,7 +60,7 @@ export function useRotation(initial: RotationState = { x: 0.4, y: 0.6, z: 0 }) {
   }, []);
 
   const setAxis = useCallback((axis: keyof RotationState, deg: number) => {
-    setRotation(r => ({ ...r, [axis]: deg * Math.PI / 180 }));
+    setRotation((r) => ({ ...r, [axis]: (deg * Math.PI) / 180 }));
   }, []);
 
   const reset = useCallback(() => setRotation(initial), [initial]);
