@@ -1,0 +1,27 @@
+# Format:
+
+# <type>[scope]: <description>
+
+# Types:
+
+# feat - new feature
+
+# fix - bug fix
+
+# docs - documentation
+
+# style - formatting
+
+# refactor - code improvement
+
+# test - tests
+
+# chore - maintenance
+
+# Scopes:
+
+# ui, core, api, auth, db, config, deps
+
+# Example:
+
+# feat[ui]: add navbar

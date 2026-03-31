@@ -11,7 +11,9 @@ $TEMP_MSG" > "$COMMIT_MSG_FILE"
 else
     if [ -n "$BRANCH_NAME" ]; then
         TEMP_MSG=$(cat "$COMMIT_MSG_FILE")
-        echo "[$BRANCH_NAME] $TEMP_MSG" > "$COMMIT_MSG_FILE"
+        echo "$TEMP_MSG
+
+Branch: $BRANCH_NAME" > "$COMMIT_MSG_FILE"
     fi
 fi
 
