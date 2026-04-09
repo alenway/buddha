@@ -6,8 +6,8 @@ import {
   combinedRotation,
   projectFaces,
   sortFaces,
-} from "../lib/math3d";
-import type { RotationState } from "../hooks/useRotation";
+} from "../../lib/math3d";
+import type { RotationState } from "../../hooks/useRotation";
 
 interface Props {
   rotation: RotationState;

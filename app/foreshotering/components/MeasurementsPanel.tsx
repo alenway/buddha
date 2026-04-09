@@ -1,7 +1,7 @@
 "use client";
 // components/MeasurementsPanel.tsx
-import { combinedRotation, computeMeasurements } from "../lib/math3d";
-import type { RotationState } from "../hooks/useRotation";
+import { combinedRotation, computeMeasurements } from "../../lib/math3d";
+import type { RotationState } from "../../hooks/useRotation";
 
 interface Props {
   rotation: RotationState;

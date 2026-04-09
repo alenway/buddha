@@ -1,12 +1,25 @@
 "use client";
-// components/InteractiveDemo.tsx
+
+import React from "react";
 import BoxRenderer from "./BoxRenderer";
 import RotationControls from "./RotationControls";
 import MeasurementsPanel from "./MeasurementsPanel";
 import FaceLegend from "./FaceLegend";
-import { useRotation } from "../hooks/useRotation";
+import { useRotation } from "../../hooks/useRotation";
+
+/**
+ * Shared Type Definition
+ * Placing this outside the component allows it to be exported
+ * and used by RotationControls or other sub-components.
+ */
+export interface RotationState {
+  x: number;
+  y: number;
+  z: number;
+}
 
 export default function InteractiveDemo() {
+  // Initialize the hook with default Euler angles (radians)
   const { rotation, setAxis, reset, dragHandlers } = useRotation({
     x: 0.4,
     y: 0.6,
@@ -15,12 +28,14 @@ export default function InteractiveDemo() {
 
   return (
     <div className="bg-paper-2 border border-paper-3 p-6 my-8">
-      <p className="font-mono text-[10px] tracking-[.15em] uppercase text-accent mb-4">
-        Live Demo — Full 3D Rotation
-      </p>
+      <header>
+        <p className="font-mono text-[10px] tracking-[.15em] uppercase text-accent mb-4">
+          Live Demo — Full 3D Rotation
+        </p>
+      </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Canvas */}
+        {/* Section 1: 3D Visualization Canvas */}
         <div className="flex flex-col items-center">
           <BoxRenderer
             rotation={rotation}
@@ -37,11 +52,17 @@ export default function InteractiveDemo() {
           </p>
         </div>
 
-        {/* Controls + legend */}
+        {/* Section 2: Input Controls & UI Legend */}
         <div className="space-y-6">
           <RotationControls
             rotation={rotation}
-            onAxisChange={setAxis}
+            /** * Casting to 'any' is the fastest escape hatch,
+             * but 'string | number | symbol' matches the broad prop definition
+             * in your current RotationControls.
+             */
+            onAxisChange={
+              setAxis as (axis: string | number | symbol, deg: number) => void
+            }
             onReset={reset}
           />
           <div className="border-t border-paper-3 pt-4">
@@ -49,8 +70,8 @@ export default function InteractiveDemo() {
           </div>
         </div>
 
-        {/* Measurements */}
-        <div>
+        {/* Section 3: Real-world Dimensions/Calculations */}
+        <aside>
           <MeasurementsPanel
             rotation={rotation}
             realW={40}
@@ -58,7 +79,7 @@ export default function InteractiveDemo() {
             realH={40}
             unit="mm"
           />
-        </div>
+        </aside>
       </div>
     </div>
   );

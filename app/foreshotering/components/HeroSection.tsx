@@ -1,4 +1,4 @@
-import InteractiveDemo from "../components/InteractiveDemo";
+import InteractiveDemo from "./InteractiveDemo";
 
 const TABLE_ROWS = [
   { angle: "0°", cos: "1.000", sin: "0.000", fw: "40.0", sd: "0.0" },

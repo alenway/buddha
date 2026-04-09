@@ -20,7 +20,7 @@ export default function FaceLegend() {
         {FACES.map((f) => (
           <div key={f.label} className="flex items-start gap-2">
             <span
-              className="w-3 h-3 rounded-sm flex-shrink-0 mt-0.5 border border-black/10"
+              className="w-3 h-3 rounded-sm shrink-0 mt-0.5 border border-black/10"
               style={{ background: f.color }}
             />
             <div>

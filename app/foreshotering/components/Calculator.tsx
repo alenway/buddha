@@ -2,8 +2,8 @@
 // components/Calculator.tsx
 import { useState } from "react";
 import BoxRenderer from "./BoxRenderer";
-import { useRotation } from "../hooks/useRotation";
-import { combinedRotation, computeMeasurements } from "../lib/math3d";
+import { useRotation } from "../../hooks/useRotation";
+import { combinedRotation, computeMeasurements } from "../../lib/math3d";
 
 const UNITS = ["mm", "cm", "m", "in", "ft", "px"] as const;
 type Unit = (typeof UNITS)[number];
@@ -123,7 +123,7 @@ export default function Calculator() {
               return (
                 <div key={axis} className="flex items-center gap-2">
                   <span
-                    className="font-mono text-[10px] w-20 flex-shrink-0"
+                    className="font-mono text-[10px] w-20 shrink-0"
                     style={{ color: colors[i] }}
                   >
                     {labels[i]}
@@ -241,7 +241,7 @@ export default function Calculator() {
         <div>
           {!results ? (
             <div className="h-full flex items-center justify-center border border-white/8 rounded-sm">
-              <p className="font-mono text-[11px] text-paper-3/20 tracking-[.1em] text-center px-4">
+              <p className="font-mono text-[11px] text-paper-3/20 tracking-widest text-center px-4">
                 Enter dimensions
                 <br />
                 and press Calculate
